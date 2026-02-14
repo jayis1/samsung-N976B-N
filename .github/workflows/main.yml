@@ -41,7 +41,7 @@ jobs:
         run: echo "::set-output name=KEY::$( echo ${{ matrix.model }} | tr ',' '_' )"
 
       - name: Cache ccache files
-        uses: actions/cache@v3
+        uses: actions/cache@v4
         with:
           path: ~/.ccache
           key: ccache-${{ env.TOOLCHAIN }}-${{ steps.ccache_model_key.outputs.KEY }}-${{ steps.ccache_timestamp.outputs.FULL_DATE }}
@@ -57,7 +57,7 @@ jobs:
                        model=${{ matrix.model }} \
                        name="Cruel-devel"        \
                        toolchain=$TOOLCHAIN      \
-                       +magisk=v20.4             \
+                       +magisk=v30.6             \
                        +nohardening              \
                        +ttl                      \
                        +wireguard                \
